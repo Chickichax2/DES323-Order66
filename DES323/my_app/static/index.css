@@ -23,16 +23,14 @@ body {
     height: 776px;
 }
 .wrap {
+    height: 776px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
 .first_text {
     font-family: 'Jockey One', sans-serif;
-
-    padding-top: 250px;
     font-size: 50px;
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     -webkit-text-stroke: 1px #fff;
@@ -42,7 +40,7 @@ body {
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     -webkit-text-stroke: 1px #fff;
     font-size: 50px;
-    padding-top: 80px;
+    padding-top: 60px;
     padding-bottom: 0px;
 }
 
@@ -57,10 +55,15 @@ body {
 .login_btn {
     background-color: #3BE857;
     font-size: large;
-    
+    transition: 0.5s;
     border: none;
     color: #fff;
     width: 100px;
     height: 35px;
     border-radius: 15px;
+}
+
+.login_btn:hover {
+    background-color: black;
+    cursor: pointer;
 }
