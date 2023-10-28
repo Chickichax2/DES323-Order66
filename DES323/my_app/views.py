@@ -7,8 +7,11 @@ def index(request):
 
 
 def about(request):
-    return render(request, "about_us.html")
+    return render(request, "about.html")
 
 
 def user(request):
     return render(request, "user.html")
+
+def search(request):
+    return render(request, "search.html")
