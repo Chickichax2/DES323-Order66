@@ -5,10 +5,10 @@
 }
 
 .main_container {
+    height: 655px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding-top: 300px;
 }
 
 .profile {

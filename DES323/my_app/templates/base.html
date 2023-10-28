@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'about_us.css' %}">
+    {% block title %}
+    {% endblock %}
+</head>
+<body>
+    <header class="navigationbar">
+        <div><h2 class="logo">Logo</h2></div>
+        <div >
+            <a href="#">Services</a>
+            <a href="#">Contact us</a>                                    
+            <button class="loginbutton">Logins</button> 
+        </div>
+    </header>
+    <div >
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <div class="footer-container">
+        <h2 class="footer-text">
+            About us
+        </h2>
+    </div>
+</body>
+</html>
