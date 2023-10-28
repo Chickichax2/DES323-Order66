@@ -15,3 +15,10 @@ def user(request):
 
 def search(request):
     return render(request, "search.html")
+
+def login(request):
+    return render(request, "login.html")
+
+def register(request):
+    return render(request, "register.html")
+
