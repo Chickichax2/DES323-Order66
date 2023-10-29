@@ -18,12 +18,26 @@
             <p style="padding-top: 50px;"> &#128274 Tag:</p>
         </div>
         <div class="main_buttons">
-            <button class="back_home">Back To Home</button>
+            <button onclick="remove()" class="back_home">Edit Profile</button>
             </br>
             </br>
-            <button class="del">Delete Account</button>
+            <button onclick="remove()" class="del">Delete Account</button>
         </div>
     </div>
+    
+    <script> 
+        function remove(){
+            console.log(remove)
+            alert('Account deleted')
+        }
 
-
-{% endblock %}
+        function edit(){
+            console.log(edit)
+            alert('Account edited')
+        }
+    
+    </script>
+    
+    {% endblock %}
+    
+    

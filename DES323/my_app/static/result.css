@@ -33,6 +33,16 @@ td {
     text-align: end;
 }
 
+button {
+    border-radius: 5px;
+    height: 25px;
+    width: 180px;
+    background: greenyellow;
+    
+    border: 2px solid yellowgreen;
 
+    font-size: 13px;
+    font-weight: 500;
+}
 
 

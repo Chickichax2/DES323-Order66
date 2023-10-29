@@ -13,9 +13,11 @@
 {% block content %}
     <div class="container" style="background-image: url('{% static 'img/result_bg.png'  %}');" >
     </br>
+
     <div class="text">
         <h3>Here are your results</h3>
     </div>
+
     </br>
     <table style="width:100%">
         <tr>
@@ -35,7 +37,35 @@
             <td>25/02/63 </td>
         </tr>
     </table>
+    
     </div>
+    
+    <div id="visual" class="graph"></div>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
+
+
+    <script>
+        async function refresh_visual() {
+            let temp_max = [];
+            let temp_min = [];
+            for (i=0; i<=4; i++){
+                temp_max.push(Math.floor(Math.random() * 100));
+                temp_min.push(Math.floor(Math.random() * 100));
+            }   
+            
+            const plot = Plot.plot({
+                marks: [
+                    Plot.lineY(temp_max,  {stroke: "red"}),
+                    Plot.lineY(temp_min,  {stroke: "green"}),
+                ]
+            })
+            const div = document.getElementById('visual');
+            div.append(plot);
+        }
+        refresh_visual(); //Call refresh_visual methods when page is loaded
+    </script>
+    <button onclick="refresh_visual()">Refresh Visualize</button>
 {% endblock %}
 
 
