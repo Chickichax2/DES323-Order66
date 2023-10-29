@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.full {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    background-image: url('https://modernfarmer.com/wp-content/uploads/2014/09/innercowhero.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.left {
+    width: 50%;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 50%;
+    height: 100vh;
+
+}
+
+.Home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+}
+
+.Home h1 {
+    font-family: 'Jockey One';
+    font-weight: 400;
+    font-size: 55px;
+    /* or 90px */
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.Home h2 {
+    font-family: 'Jockey One';
+    font-weight: 400;
+    font-size: 25   px;
+    /* or 90px */
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.dropdown {
+    padding: 20px;
+
+    font: 1em sans-serif;
+    
+    height: 55px;
+    width: 380px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    border: 1px solid #000;
+
+    display: flex;
+    justify-content: space-between;
+
+ 
+}
+
+form select {
+    font: 1em sans-serif;
+    background-color: #58E16E;
+    border-radius: 5px;
+    width: 100px;
+    height: 28px;
+
+    text-align: center;
+
+   translate: 0px -6px;
+}
+.home button {
+    border: none;
+    background: #1F7BCF;
+    border-radius: 20px;
+    width: 140px;
+    height: 54px;
+    font: 20px sans-serif;
+    color: #fff;
+    font-weight: 600;
+    transition: .5s;
+    
+
+    &:hover{
+        cursor: pointer;
+        translate: 0 -5px;
+    }
+}
+
+

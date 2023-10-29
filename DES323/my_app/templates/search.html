@@ -2,9 +2,60 @@
 {% load static %}
 
 {% block title %}
-    <title>Search</title>
+<title>Search</title>
+<link rel="stylesheet" href="{% static 'search.css' %}">
 {% endblock %}
 
 {% block content %}
 
+<body>
+    <div class="full">
+        <div class="left">
+
+        </div>
+
+        <div class="right">
+            <div class="home">
+                <h1>Dairy Finder</h1> <br>
+                <h2>The Replublic of India</h2> <br><br>
+                <div class="dropdown">
+                    <p> Farm Size </p>
+                    <form>
+                        <select id="fsize">
+                            <option>small</option>
+                            <option>medium</option>
+                            <option>large</option>
+                        </select>
+                    </form>
+                </div> <br>
+                <div class="dropdown">
+                    <p> Product Type </p>
+                    <form>
+                        <select id="fsize">
+                            <option>small</option>
+                            <option>medium</option>
+                            <option>large</option>
+                        </select>
+                    </form>
+                </div> <br>
+                <div class="dropdown">
+                    <p> Quantities </p>
+                    <form>
+                        <select id="fsize">
+                            <option>small</option>
+                            <option>medium</option>
+                            <option>large</option>
+                        </select>
+                    </form>
+                </div> <br>
+
+                <a href="result"><button onclick="generate()">Submit</button></a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
 {% endblock %}
