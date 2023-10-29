@@ -15,7 +15,8 @@ body {
     background-image: url('https://news.mit.edu/sites/default/files/images/202206/MIT-Labby-01.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover
+    background-size: cover;
+    height: 100vh;
 }
 
 .colorBack {

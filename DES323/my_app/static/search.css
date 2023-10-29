@@ -7,8 +7,6 @@
 
 
 .full {
-    display: flex;
-    flex-direction: row;
     width: 100%;
     height: 100%;
     left: 0px;
@@ -16,6 +14,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
+    display: flex;
+    flex-direction: row;
 }
 
 .left {
@@ -84,18 +84,32 @@
 
  
 }
-
 form select {
     font: 1em sans-serif;
-    background-color: #58E16E;
+    background-color: #71f086;
     border-radius: 5px;
     width: 100px;
     height: 28px;
 
     text-align: center;
 
-   translate: 0px -6px;
+    translate: 0px -6px;
+    
+   transition: .5s;
+   
 }
+
+form select:hover {
+    font-size: 1.15em;
+    background-color: #fff;
+    text-align: center;
+
+
+} 
+
+
+
+
 .home button {
     border: none;
     background: #1F7BCF;
