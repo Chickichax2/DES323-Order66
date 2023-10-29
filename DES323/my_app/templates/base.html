@@ -11,14 +11,25 @@
     {% endblock %}
 </head>
 <body>
-    <header class="navigationbar">
-        <div class="logo"><a class="logo-img" href="search"><img src="{% static 'img/logo.png' %}" alt="logo" width="25%"></a></div>
-        <div class="navRight">
-            <a class="navRight-a" href="#">Services</a>
-            <a class="navRight-a" href="contact">Contact us</a>                                    
-            <a class="navRight-a" href="user"><span class="material-symbols-outlined">person</span></a>
+    <nav>
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a class="logo-img" href="search"><img src="{% static 'img/logo.png' %}" alt="logo" width="25%"></a>
+                </div>
+                <ul class="manu" id="myMenu">
+                    <a class="navRight-a" href="#">Services</a>
+                    <a class="navRight-a" href="contact">Contact us</a>
+                    <a class="navRight-a" href="user"><span class="material-symbols-outlined">person</span></a>
+                </ul>
+                <div class="ham-manu" onclick="myFunction(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                  </div>
+            </div>
         </div>
-    </header>
+    </nav>
     <div >
         {% block content %}
 
@@ -29,5 +40,17 @@
             About us
         </h2>
     </div>
+    <script>
+        function myFunction(x) {
+            x.classList.toggle("change");
+            let myMenu = document.getElementById('myMenu')
+            if (myMenu.className === 'manu') {
+                myMenu.className += ' manu-active'
+            }
+            else {
+                myMenu.className = 'manu'
+            }
+        }
+    </script>
 </body>
 </html>
