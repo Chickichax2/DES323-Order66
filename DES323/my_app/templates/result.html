@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+{% block title %}
+    <title>Results</title>
+    <link rel="stylesheet" href="{% static 'result.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="container" style="background-image: url('{% static 'img/result_bg.png'  %}');" >
+    </br>
+    <div class="text">
+        <h3>Here are your results</h3>
+    </div>
+    </br>
+    <table style="width:100%">
+        <tr>
+            <th>No.</th>
+            <th>Location</th>
+            <th>Total land area</th>
+            <th>No. of cow</th>
+            <th>Product price</th>
+            <th>Last updated</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>India</td>
+            <td>2,048</td>
+            <td>500</td>
+            <td>25 </td>
+            <td>25/02/63 </td>
+        </tr>
+    </table>
+    </div>
+
+
+{% endblock %}
+
+
+

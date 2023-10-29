@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Register</title>
     <link rel="stylesheet" href="{% static 'login_register.css' %}">
 </head>
 <body>
@@ -17,13 +17,13 @@
             <div class="sub_container">
                 <img src="{% static 'img/logo-removebg.png' %}" alt="login_bg" width="198">
                           
-                <input type="text" value="Email" autofocus>
+                <input type="text" placeholder="Email" name="email"  autofocus>
                 </br>
-                <input type="text" value="Username">
+                <input type="text" placeholder="Username" name="username" >
                 </br>
-                <input type="text" value="Password">
+                <input type="password" placeholder="Password" name="password">
                 </br>
-                <input type="text" value="Confirm Password">
+                <input type="password" placeholder="Confirm Password" name="conpassword" >
                 </br>
                 <a href="search"><button class="btn--1">Create Account</button></a>
                 </br>

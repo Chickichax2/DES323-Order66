@@ -55,9 +55,10 @@ input {
 
     border: none;
     box-shadow: 2px 2px 1px #000000;
-
+    outline: none;
     translate: 0px -150px ;
 }
+
 
 .btn--1 {
     color: #fff;
@@ -96,18 +97,21 @@ input {
     border-radius: 5px;
     border: none;
     box-shadow: 2px 2px 10px #000000;
-
+    transition: 0.5s;
     font-size: 22px;
     font-weight: 600;
 
     translate: 0px -150px ;
 }
+.btn--2:hover {
+    cursor: pointer;
 
+}
 .btn--3 {
     color: #fff;
     background: none;
     border: none;
-    transition: .5s;
+    transition: 0.5s;
 
     text-shadow: 2px 2px 5px #000000;
     font-size: 16px;
@@ -117,4 +121,5 @@ input {
 
 .btn--3:hover {
     color: #000000;
+    cursor: pointer;
 }

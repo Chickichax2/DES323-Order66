@@ -1,0 +1,55 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.main_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 655px;
+}
+
+.contact_us {
+    font: 1.5rem sans-serif;
+    width: 40%;
+}
+
+.contact_us p {
+    padding-bottom: 40px;
+}
+
+.text_dec {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.contact_text {
+    padding-bottom: 30px;
+}
+
+.open_time {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.emoji_size {
+    font-size: 35px;
+    padding-right: 50px;
+}
+
+.time_self {
+    padding-inline-start: 150px;
+}
+
+/*right panel (map)*/
+
+.map_pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: auto;
+}

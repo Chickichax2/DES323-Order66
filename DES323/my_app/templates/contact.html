@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Contact</title>
+    <link rel="stylesheet" href="{% static 'contact.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="main_container">
+        <div class="contact_us">
+            <h2 class="contact_text">Contact Us</h2>
+            <div class="text_dec">
+                <div class="emoji_size">&#128231 </div>
+                <div><p>dairyfinder@gmail.com</p></div>
+            </div> 
+            <div class="text_dec">
+                <div class="emoji_size">&#128222 </div>
+                <div><p>08x xxx xxxx</p></div>
+            </div> 
+            <div class="text_dec">
+                <div class="emoji_size">&#128204 </div>
+                <div><p> 99 Moo 18, Km. 41 on Paholyothin Highway </br>Khlong Luang, Pathum Thani 12120, Thailand</p></div>
+            </div> 
+            <div class="open_time">
+                <div class="emoji_size">&#9200</div>
+                <p>Monday - Friday </br>Saturday - Sunday </p>
+                <p class="time_self"> 9 am  -   7 pm </br>10 am  -  9 pm</p>
+            </div>  
+        </div>
+        <div class="map_pic">
+            <img src="{% static 'img/contactus_map.PNG' %}" alt="map_location" width="60%">
+        </div>
+    </div>
+{% endblock %}

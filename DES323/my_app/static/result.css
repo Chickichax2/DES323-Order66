@@ -1,0 +1,38 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 655px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 100px;
+}
+
+.text {
+    font: 1em sans-serif;
+    padding-bottom: 10px; 
+}
+
+table, th, td {
+    border: 2.5px solid black;
+    border-collapse: collapse;
+    width: 20%;
+    background-color: #fff;
+    padding: 5px;
+}
+
+td {
+    font-size: 25px;
+    text-align: end;
+}
+
+
+
+
