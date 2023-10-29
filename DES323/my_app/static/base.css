@@ -18,12 +18,21 @@ header {
 }
 
 .logo {
-  font-size: 2em;
-  color: white;
-  user-select: none;   
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+
+}
+.navRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.material-symbols-outlined {
+  width: 50%;
 }
 
-.navigationbar a {
+.navRight-a {
   position: relative;
   font-size: 1.1em;
   color: white;

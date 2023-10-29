@@ -6,16 +6,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     {% block title %}
     {% endblock %}
 </head>
 <body>
     <header class="navigationbar">
-        <div><h2 class="logo">Logo</h2></div>
-        <div >
-            <a href="#">Services</a>
-            <a href="#">Contact us</a>                                    
-            <button class="loginbutton">Logins</button> 
+        <div class="logo"><a class="logo-img" href="search"><img src="{% static 'img/logo.png' %}" alt="logo" width="25%"></a></div>
+        <div class="navRight">
+            <a class="navRight-a" href="#">Services</a>
+            <a class="navRight-a" href="contact">Contact us</a>                                    
+            <a class="navRight-a" href="user"><span class="material-symbols-outlined">person</span></a>
         </div>
     </header>
     <div >
