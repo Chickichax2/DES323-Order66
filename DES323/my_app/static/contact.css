@@ -41,7 +41,7 @@
 }
 
 .time_self {
-    padding-inline-start: 150px;
+    padding-inline-start: 20px;
 }
 
 /*right panel (map)*/
@@ -50,6 +50,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40%;
+    width: 50%;
     height: auto;
 }
