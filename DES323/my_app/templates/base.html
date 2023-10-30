@@ -17,16 +17,16 @@
                 <div class="logo">
                     <a class="logo-img" href="search"><img src="{% static 'img/logo.png' %}" alt="logo" width="25%"></a>
                 </div>
-                <ul class="manu" id="myMenu">
-                    <a class="navRight-a" href="#">Services</a>
-                    <a class="navRight-a" href="contact">Contact us</a>
-                    <a class="navRight-a" href="user"><span class="material-symbols-outlined">person</span></a>
+                <ul class="menu" id="myMenu">
+                    <li><a class="navRight-a" href="#">Services</a></li>
+                    <li><a class="navRight-a" href="contact">Contact us</a></li>
+                    <li><a class="navRight-a" href="user"><span class="material-symbols-outlined">person</span></a></li>
                 </ul>
-                <div class="ham-manu" onclick="myFunction(this)">
+                <div class="ham-menu" onclick="myFunction(this)">
                     <div class="bar1"></div>
                     <div class="bar2"></div>
                     <div class="bar3"></div>
-                  </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -43,14 +43,14 @@
     <script>
         function myFunction(x) {
             x.classList.toggle("change");
-            let myMenu = document.getElementById('myMenu')
-            if (myMenu.className === 'manu') {
-                myMenu.className += ' manu-active'
-            }
-            else {
-                myMenu.className = 'manu'
+            var myMenu = document.getElementById("myMenu");
+            if (myMenu.className === "menu") {
+                myMenu.className += ' menu-active';
+            } else {
+                myMenu.className = "menu";
             }
         }
+        
     </script>
 </body>
 </html>
