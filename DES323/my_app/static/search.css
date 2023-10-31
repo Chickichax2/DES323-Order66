@@ -7,11 +7,12 @@
 
 
 .full {
-    width: 100%;
+    max-width: 1140;
     height: 655px;
     left: 0px;
     background-image: url('https://modernfarmer.com/wp-content/uploads/2014/09/innercowhero.jpg');
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
     overflow: hidden;
     display: flex;
@@ -132,70 +133,54 @@ form select:hover {
 @media (max-width: 391px) {
     .full {
         width: 890px;
-        height: 100%;
+        height: 82.5vh;
         background-image: url('https://modernfarmer.com/wp-content/uploads/2014/09/innercowhero.jpg');
         background-repeat: no-repeat;
+        background-position: 140px;
         background-size: cover;
         overflow: hidden;
         display: flex;
         flex-direction: row;
-
         translate: -500px 0px;
     }
 
     .left {
-        width: 0%;
+        display: none;
     }
 
     .right {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-
         width: 100%;
         height: 100vh;
-
     }
 
     .dropdown p {
         translate: 0px -10px;
     }
-
     .home h1 {
         font-family: 'Jockey One';
         font-weight: 600;
         font-size: 45px;
-
         -webkit-text-stroke: 1px #fff;
-
-
         translate: 250px 0px;
-
     }
-
     .home h2 {
         font-family: 'Jockey One';
         font-weight: 600;
         font-size: 28px;
-
         -webkit-text-stroke: .5px #fff;
-
         translate: 250px 0px;
     }
-
     .dropdown {
-
         font: 1em sans-serif;
-
         height: 35px;
         width: 280px;
         background: #FFFFFF;
         border-radius: 5px;
         border: 1px solid #000;
-
         translate: 250px 0px;
-
     }
 
     form select {
@@ -204,16 +189,10 @@ form select:hover {
         border-radius: 5px;
         width: 80px;
         height: 25px;
-
         text-align: center;
-
         translate: 0px -12px;
-        ;
-
         transition: .5s;
-
     }
-
     .home button {
         border: none;
         background: #1F7BCF;
@@ -224,7 +203,6 @@ form select:hover {
         color: #fff;
         font-weight: 600;
         transition: .5s;
-
         translate: 250px 0px;
     }
 }

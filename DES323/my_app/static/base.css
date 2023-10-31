@@ -42,7 +42,7 @@ nav {
 }
 
 .footer-container {
-  
+  bottom: 1px;
   background: #404143;
   width: 1440ps;
   height: 50px;

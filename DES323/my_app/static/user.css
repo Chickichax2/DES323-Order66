@@ -38,3 +38,24 @@
 .del {
     background-color:  #CC0202;
 }
+
+@media only screen and (max-width: 391px){
+    .main_container {
+        display: block;
+        height: 65.5vh;
+    }
+    .profile{
+        margin: 9rem 2rem 3rem 2rem;
+        
+    }
+    .profile p {
+        font-size: 1.3rem;
+    }
+    .main_buttons {
+        margin: 5rem 2rem 3rem 2rem;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        
+    }
+}   

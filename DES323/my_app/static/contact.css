@@ -55,6 +55,7 @@
 @media only screen and (max-width: 391px) {
     .main_container {
         display: block;
+        height: 80vh;
     }
     .contact_us {
         font-size: small;
