@@ -16,13 +16,10 @@
     width: 40%;
 }
 
-.contact_us p {
-    padding-bottom: 40px;
-}
-
 .text_dec {
     display: flex;
     justify-content: flex-start;
+    margin-bottom: 1rem;
 }
 
 .contact_text {
@@ -47,9 +44,43 @@
 /*right panel (map)*/
 
 .map_pic {
+    width: 40%;
+    height: 60%;
+}
+.text {
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 50%;
-    height: auto;
+}
+
+@media only screen and (max-width: 391px) {
+    .main_container {
+        display: block;
+    }
+    .contact_us {
+        font-size: small;
+        width: auto;
+        margin: 1.5rem;
+    }
+    .text_dec {
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    .emoji_size {
+        font-size: 25px;
+        width: 2rem;
+    }
+    .text {
+        display: flex;
+        align-items: center;
+    }
+    .contact_text {
+        display: flex;
+        justify-content: center;
+    }
+    .map_pic {
+        width: 90%;
+        height: 40%;
+        margin: 1rem;
+    }
+    
 }
