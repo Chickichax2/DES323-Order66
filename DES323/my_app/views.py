@@ -32,10 +32,10 @@ def result(request):
 def dairy(request):
     csv_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRsQsF25947ZGBAMUS_ljKLeV4bFzPSOf_wShl8_mqXOwvohpmxXq0bu-zFfGn2ppf4TmS1lNIl7aLU/pub?output=csv"
     df = pd.read_csv(csv_url)
-    dairy_dataset = df[["Location", "Total Land Area (acres)", "Number of Cows", "Price per Unit", "Date", "Farm Size", "Product Name", "Quantity (liters/kg)"]]
+    data_set = df[["Location", "Total Land Area (acres)", "Number of Cows", "Price per Unit", "Date", "Farm Size", "Product Name", "Quantity (liters/kg)"]]
     success = []
     errors = []
-    for index, row in dairy_dataset.iterrows():
+    for index, row in data_set.iterrows():
         instance = dairy_dataset(
             location = row['Location'],
             tot_land_area = row['Total Land Area (acres)'],
@@ -46,11 +46,11 @@ def dairy(request):
             product_type = row['Product Name'],
             quantity = int(row['Quantity (liters/kg)'])
         )
-    """
+    
         try:
             instance.save()
             success.append(index)
         except:
             errors.append(index)
     return JsonResponse({"success_indexes":success, "error_indexes":errors})
-    """
+    

@@ -10,4 +10,5 @@ urlpatterns = [
     path('register',views.register),
     path('contact', views.contact),
     path('result', views.result),
+    path('dairy', views.dairy),
 ]
