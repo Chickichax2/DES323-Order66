@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-
-
-
 {% block title %}
     <title>Results</title>
     <link rel="stylesheet" href="{% static 'result.css' %}">
@@ -19,6 +16,7 @@
     </div>
 
     </br>
+
     <table style="width:100%">
         <tr>
             <th>No.</th>
@@ -37,13 +35,12 @@
             <td>25/02/63 </td>
         </tr>
     </table>
-    
+
     </div>
     
     <div id="visual" class="graph"></div>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
-
 
     <script>
         async function refresh_visual() {

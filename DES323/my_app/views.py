@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
-import pandas as pd
 from my_app.models import dairy_dataset
+import pandas as pd
 # Create your views here.
 
 def index(request):
@@ -29,7 +29,7 @@ def contact(request):
 def result(request):
     return render(request, "result.html")
 
-def import_dairy_data(request):
+def dairy(request):
     csv_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRsQsF25947ZGBAMUS_ljKLeV4bFzPSOf_wShl8_mqXOwvohpmxXq0bu-zFfGn2ppf4TmS1lNIl7aLU/pub?output=csv"
     df = pd.read_csv(csv_url)
     dairy_dataset = df[["Location", "Total Land Area (acres)", "Number of Cows", "Price per Unit", "Date", "Farm Size", "Product Name", "Quantity (liters/kg)"]]
@@ -46,9 +46,11 @@ def import_dairy_data(request):
             product_type = row['Product Name'],
             quantity = int(row['Quantity (liters/kg)'])
         )
+    """
         try:
             instance.save()
             success.append(index)
         except:
             errors.append(index)
     return JsonResponse({"success_indexes":success, "error_indexes":errors})
+    """
