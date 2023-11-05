@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 from my_app.models import dairy_dataset
 import pandas as pd
+import requests
+import json
 # Create your views here.
 
 def index(request):
@@ -29,6 +31,9 @@ def contact(request):
 def result(request):
     return render(request, "result.html")
 
+def pincode(request):
+    return render(request, "pincode.html")
+
 def dairy(request):
     csv_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRsQsF25947ZGBAMUS_ljKLeV4bFzPSOf_wShl8_mqXOwvohpmxXq0bu-zFfGn2ppf4TmS1lNIl7aLU/pub?output=csv"
     df = pd.read_csv(csv_url)
@@ -53,4 +58,35 @@ def dairy(request):
         except:
             errors.append(index)
     return JsonResponse({"success_indexes":success, "error_indexes":errors})
+
+def external_api(request):
+    api_url = "https://api.postalpincode.in/pincode/110001"
+    response = requests.get(api_url)
+    if response.status_code == 200:
+        data = response.json()
+
+    # Assuming the response structure is a list with one object
+    if len(data) > 0:
+        # Access the first (and only) object in the list
+        specific_object = data[0]
+
+        # Access and print specific elements within the object
+        print("Status:", specific_object.get("Status"))
+        print("Message:", specific_object.get("Message"))
+
+        # Accessing PostOffice details (assuming it's also a list)
+        post_offices = specific_object.get("PostOffice", [])
+        for office in post_offices:
+            print("Post Office Name:", office.get("Name"))
+            print("Delivery Status:", office.get("DeliveryStatus"))
+            print("District:", office.get("District"))
+            print("State:", office.get("State"))
+            print("-------------------")
+        else:
+            print("No data available.")
+    else:
+        print("Failed to fetch data. Status code:", response.status_code)
     
+
+    return JsonResponse(response.json(), safe=False)
+        

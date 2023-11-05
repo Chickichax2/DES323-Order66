@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<title>Results</title>
+<link rel="stylesheet" href="{% static 'result.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="con">
+</br>
+<div class="text"><h3>Search Post Code By State</h3></div>
+</br>
+<div class="search">
+    
+        <label for="state">State:</label>
+        <select name="state" id="state" >
+            <option value="default">Select State</option>
+            <option value="744101">744101</option>
+            <option value="744102">744102</option>
+            <option value="744103">744103</option>
+            <option value="744104">744104</option>
+            <option value="744105">744105</option>
+            <option value="744106">744106</option>
+            <option value="744107">744107</option>
+            <option value="744112">744112</option>
+            <option value="744201">744201</option>
+            <option value="744202">744202</option>
+            <option value="744203">744203</option>
+            <option value="744204">744204</option>
+            <option value="744205">744205</option>
+            <option value="744206">744206</option>
+            <option value="744207">744207</option>
+            <option value="744209">744209</option>
+            <option value="744210">744210</option>
+            <option value="744211">744211</option>
+            <option value="744301">744301</option>
+            <option value="744302">744302</option>
+            <option value="744303">744303</option>
+            <option value="744304">744304</option>
+            
+          </select>
+        
+        
+
+    <button onclick="refresh_visual()">Submit</button>
+</div>
+</br>
+<div class="homescreen">
+    <table style="width:100%" id="dataDisplay">
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>BranchType</th>
+            <th>Pincode</th>
+            
+        </tr>
+
+        <tbody id="list">
+            
+        </tbody>
+    </table>
+</div>
+</div>
+
+<div id="visual" class="graph"></div>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
+
+<script>
+    function refresh_visual() {
+        
+        let value = document.getElementById('state').value;
+        const url = 'https://api.postalpincode.in/pincode/';
+        final_url = url+value
+        console.log('final_url')
+        fetch(final_url)
+        .then(response => {
+            if (!response.ok) {
+            throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.length > 0) {
+            const specificObject = data[0];
+            const tableBody = document.querySelector('#dataDisplay tbody');
+            // Access PostOffice details and populate the table
+            tableBody.innerHTML = '';
+            
+            specificObject.PostOffice.forEach(office => {
+                const row = tableBody.insertRow();
+                    row.insertCell().textContent = office.Name;
+                    row.insertCell().textContent = office.BranchType;
+                    row.insertCell().textContent = office.Pincode;    
+                
+                
+            }); 
+            } 
+            else {
+            const dataDisplay = document.getElementById('dataDisplay');
+            dataDisplay.textContent = "No data available.";
+            }
+        })
+        .catch(error => {
+            const dataDisplay = document.getElementById('dataDisplay');
+            dataDisplay.textContent = `Error: ${error}`;
+        });
+    }
+    
+  </script>
+
+{% endblock %}
