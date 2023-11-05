@@ -37,10 +37,10 @@ def pincode(request):
 def dairy(request):
     csv_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRsQsF25947ZGBAMUS_ljKLeV4bFzPSOf_wShl8_mqXOwvohpmxXq0bu-zFfGn2ppf4TmS1lNIl7aLU/pub?output=csv"
     df = pd.read_csv(csv_url)
-    data_set = df[["Location", "Total Land Area (acres)", "Number of Cows", "Price per Unit", "Date", "Farm Size", "Product Name", "Quantity (liters/kg)"]]
+    dataset = df[["Location", "Total Land Area (acres)", "Number of Cows", "Price per Unit", "Date", "Farm Size", "Product Name", "Quantity (liters/kg)"]]
     success = []
     errors = []
-    for index, row in data_set.iterrows():
+    for index, row in dataset.iterrows():
         instance = dairy_dataset(
             location = row['Location'],
             tot_land_area = row['Total Land Area (acres)'],
@@ -59,6 +59,23 @@ def dairy(request):
             errors.append(index)
     return JsonResponse({"success_indexes":success, "error_indexes":errors})
 
+def create(request):
+    pass
+
+def view(request):
+    dairy_objects = dairy_dataset.objects.all()
+    list_dairy_dataset = {
+        "filter_type":"All",
+        "datasets": dairy_objects
+    }
+    return render(request, 'crud_result.html', context = list_dairy_dataset)
+
+def update(request):
+    pass
+
+def delete(request):
+    pass
+    
 def external_api(request):
     api_url = "https://api.postalpincode.in/pincode/110001"
     response = requests.get(api_url)

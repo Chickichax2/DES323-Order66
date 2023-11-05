@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Showing {{ filter_type }} </h1>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>No.</th>
+            <th>Location</th>
+            <th>Total Land Area</th>
+            <th>Number of Cows</th>
+            <th>Product Price</th>
+            <th>Date</th>
+        </tr>
+    {% for row in datasets %}
+        <tr>
+            <td>{{ row.id }}</td>
+            <td>{{ row.location }}</td>
+            <td>{{ row.tot_land_area }}</td>
+            <td>{{ row.num_cows }}</td>
+            <td>{{ row.price }}</td>
+            <td>{{ row.recording_date }}</td>
+            
+            <td>
+            <a href="/update/{{ row.id }}">Update</a>
+            <a href="/delete/{{ row.id }}">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+</div>

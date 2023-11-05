@@ -11,6 +11,7 @@ urlpatterns = [
     path('contact', views.contact),
     path('result', views.result),
     path('dairy', views.dairy),
+    path('view', views.view),
     path('external_api', views.external_api),
     path('pincode', views.pincode),
 ]
