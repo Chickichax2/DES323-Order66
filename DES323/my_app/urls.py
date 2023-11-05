@@ -11,7 +11,9 @@ urlpatterns = [
     path('contact', views.contact),
     path('result', views.result),
     path('dairy', views.dairy),
-    path('view', views.view),
+    path('read', views.read),
+    path('add', views.add)
+
     path('external_api', views.external_api),
     path('pincode', views.pincode),
 ]

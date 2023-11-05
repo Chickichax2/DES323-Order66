@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import JsonResponse
 from my_app.models import dairy_dataset
@@ -60,22 +60,52 @@ def dairy(request):
     return JsonResponse({"success_indexes":success, "error_indexes":errors})
 
 def create(request):
-    pass
+    if request.method == "POST":
+        form_data = request.POST
+        new_item = dairy_dataset(
+            location = form_data['location'],
+            tot_land_area = form_data['tot_land_area'],
+            num_cows = int(form_data['num_cows']),
+            price = form_data['price'],
+            recording_date = form_data['recording_date'],
+            farm_size = form_data['farm_size'],
+            product_type = form_data['product_type'],
+            quantity = int(form_data['quantity'])
+        )
+        try:
+            new_item.save()
+        except:
+            return HttpResponse("An error has occured.")
+        return redirect('read' )
+    context_data = {
+        'item_id': "New",
+        'form_data': {
+            'location':"",
+            'tot_land_area':0,
+            'num_cows':0,
+            'price':0,
+            'recording_date':"",
+            'farm_size':"",
+            'product_type':"",
+            'quantity':0
+        }
+    }
+    return render(request, 'create_data.html', context = context_data)
 
-def view(request):
+def read(request):
     dairy_objects = dairy_dataset.objects.all()
-    list_dairy_dataset = {
+    context_data = {
         "filter_type":"All",
         "datasets": dairy_objects
     }
-    return render(request, 'crud_result.html', context = list_dairy_dataset)
+    return render(request, 'crud_result.html', context = context_data)
 
 def update(request):
     pass
 
 def delete(request):
     pass
-    
+
 def external_api(request):
     api_url = "https://api.postalpincode.in/pincode/110001"
     response = requests.get(api_url)
