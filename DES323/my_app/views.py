@@ -35,7 +35,7 @@ def pincode(request):
     return render(request, "pincode.html")
 
 def dairy(request):
-    csv_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRsQsF25947ZGBAMUS_ljKLeV4bFzPSOf_wShl8_mqXOwvohpmxXq0bu-zFfGn2ppf4TmS1lNIl7aLU/pub?output=csv"
+    csv_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT8cyD5DN8VtbyY1WVKiWXTvb1njwjK-8PupnJR1Otb3rX8QPsu-u8Vs9miQzDs-vCEWvJVZCuA_2xA/pub?output=csv"
     df = pd.read_csv(csv_url)
     dataset = df[["Location", "Total Land Area (acres)", "Number of Cows", "Price per Unit", "Date", "Farm Size", "Product Name", "Quantity (liters/kg)"]]
     success = []
@@ -51,14 +51,13 @@ def dairy(request):
             product_type = row['Product Name'],
             quantity = int(row['Quantity (liters/kg)'])
         )
-    
         try:
             instance.save()
             success.append(index)
         except:
             errors.append(index)
-    return JsonResponse({"success_indexes":success, "error_indexes":errors})
-
+    return JsonResponse({"success_indexes":success,"error_index":errors})
+########################################################################
 def create(request):
     if request.method == "POST":
         form_data = request.POST
@@ -141,7 +140,7 @@ def delete(request, id):
         return HttpResponse("ID not found")
     dairy_objects.delete()
     return redirect('read')    
-
+#############################################################################
 def external_api(request):
     api_url = "https://api.postalpincode.in/pincode/110001"
     response = requests.get(api_url)
