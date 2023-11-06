@@ -5,8 +5,8 @@ from .models import *
 class dairy_dataset(admin.ModelAdmin):
     pass
 
-@admin.register(user)
-class user(admin.ModelAdmin):
+@admin.register(user_ac)
+class user_ac(admin.ModelAdmin):
     pass
 
 

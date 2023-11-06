@@ -15,7 +15,7 @@ class dairy_dataset(models.Model):
     added_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default=None)
     added_date = models.DateTimeField(default=timezone.now)
 
-class user(models.Model):
+class user_ac(models.Model):
     email = models.CharField(max_length=100)
     username = models.CharField(max_length=100)
-    passworld = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)

@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import JsonResponse
-from my_app.models import dairy_dataset
+from my_app.models import *
 import pandas as pd
 import requests
-import json
+from django.contrib.auth import authenticate , login
+from django.shortcuts import render, redirect
 # Create your views here.
 
 def index(request):
@@ -20,9 +21,38 @@ def search(request):
     return render(request, "search.html")
 
 def login(request):
+    # if request.method == 'POST':
+    #     email = request.POST['email']
+    #     pass1 = request.POST['pass']
+        
+    #     user_ac = authenticate(email=email, password=pass1)
+        
+    #     if user_ac is not None:
+    #         login(request, user_ac)
+    #         username = user.username
+    #         # messages.success(request, "Logged In Sucessfully!!")
+    #         return render(request, "search",{"username":username})
+        
+            
+    
     return render(request, "login.html")
 
+    
+
 def register(request):
+    if request.method == "POST":
+        form_data = request.POST
+        new_item = user_ac(
+            email = form_data['regis_email'],
+            username = form_data['regis_username'],
+            password =  form_data['regis_password']
+        )
+        
+        new_item.save()
+        return redirect('/login')
+
+
+
     return render(request, "register.html")
 
 def contact(request):
@@ -141,6 +171,17 @@ def delete(request, id):
     dairy_objects.delete()
     return redirect('read')    
 #############################################################################
+#### crud user ##########################################################
+
+    
+        
+
+
+
+
+
+
+#### crud user ##########################################################
 def external_api(request):
     api_url = "https://api.postalpincode.in/pincode/110001"
     response = requests.get(api_url)
@@ -171,4 +212,42 @@ def external_api(request):
     
 
     return JsonResponse(response.json(), safe=False)
-        
+###############################################################################
+def data_sci_item_list_all(request):
+    dataset_objs = user_ac.objects.all()
+    context_data = {
+        "filter_type": "All",
+        "datasets": dataset_objs
+    }
+    return render(request, 'list_view.html', context=context_data)
+
+def data_sci_item_edit(request, id):
+    try:
+        item = user_ac.objects.get(id=id)
+    except:
+        return HttpResponse("ID Not found")
+    if request.method == "POST":
+        form_data = request.POST
+        item.email = form_data['Email']
+        item.username = form_data['Username']
+        try:
+            item.save()
+        except:
+            return HttpResponse("ERROR!")
+        return redirect('/manage_user')
+    context_data = {
+        'item_id': id,
+        'form_data': {
+            'Email': item.email,
+            'Username': item.username
+        }
+    }
+    return render(request, 'form.html', context=context_data)
+
+def data_sci_item_delete(request, id):
+    dataset_objs = user_ac.objects.filter(id = id)
+    if len(dataset_objs) <= 0:
+        return HttpResponse("ID Not found")
+    dataset_objs.delete()
+    return redirect('/manage_user')
+###########################################################################

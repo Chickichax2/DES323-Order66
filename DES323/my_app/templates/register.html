@@ -15,18 +15,20 @@
         </div>
         <div class="right_window">
             <div class="sub_container">
-                <img src="{% static 'img/logo-removebg.png' %}" alt="login_bg" width="198">
-                          
-                <input class="registext" type="text" placeholder="Email" name="email"  autofocus>
-                </br>
-                <input class="registext" type="text" placeholder="Username" name="username" >
-                </br>
-                <input class="registext" type="password" placeholder="Password" name="password">
-                </br>
-                <input class="registext" type="password" placeholder="Confirm Password" name="conpassword" >
-                </br>
-                <a href="search"><button onclick="insert()" class="btn--1">Create Account</button></a>
-                </br>
+                <img src="{% static 'img/logo.png' %}" alt="login_bg" width="150">
+                <form action="/register" method="post">    
+                    {% csrf_token %}    
+                    <input class="registext" value="{{form_data.regis_email}}" type="text" placeholder="Email" name="regis_email"  autofocus>
+                    </br>
+                    <input class="registext" value="{{form_data.regis_username}}" type="text" placeholder="Username" name="regis_username" >
+                    </br>
+                    <input class="registext" value="{{form_data.regis_password}}" type="password" placeholder="Password" name="regis_password">
+                    </br>
+                    <input class="registext" value="{{form_data.regis_conpassword}}" type="password" placeholder="Confirm Password" name="regis_conpassword" >
+                    </br>
+                    <button onclick="insert()" class="btn--1" type="submit" >Create Account</button>
+                    </br>
+                </form>  
             </div>
         </div>
     </div>

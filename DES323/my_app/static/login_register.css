@@ -38,26 +38,32 @@
 }
 
 .sub_container {
+    width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
 }
-
-input {
+form {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+form input {
+    margin-top: 10px;
+    height: 50px;
+    width: 50%;
     border-radius: 8px;
     font-family: 'Courier New', Courier, monospace;
-
-    width: 400px;
-    height: 50px;
-
     padding-left: 25px;
-
     border: none;
     box-shadow: 2px 2px 1px #000000;
     outline: none;
-    translate: 0px -150px ;
+    
 }
 
 
@@ -70,11 +76,8 @@ input {
     border: none;
     box-shadow: 2px 2px 10px #000000;
     transition: 0.8s;
-
     font-family: 'Times New Roman', Times, serif;
     font-weight: 600;
-
-    translate: 0px -150px ;  
 }
 
 .btn--1:hover {
@@ -87,7 +90,7 @@ input {
     font-family: 'Courier New', Courier, monospace;
     font-size: 18px;
 
-    translate: 0px -150px ;
+    
 }
 
 .btn--2 {
@@ -102,7 +105,7 @@ input {
     font-size: 22px;
     font-weight: 600;
 
-    translate: 0px -150px ;
+    
 }
 .btn--2:hover {
     cursor: pointer;
@@ -117,7 +120,7 @@ input {
     text-shadow: 2px 2px 5px #000000;
     font-size: 16px;
 
-    translate: 0px -150px ;
+    
 }
 
 .btn--3:hover {
