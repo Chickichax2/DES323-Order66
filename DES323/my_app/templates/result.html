@@ -8,59 +8,35 @@
 
 
 {% block content %}
-    <div class="container" style="background-image: url('{% static 'img/result_bg.png'  %}');" >
-    </br>
+    <div class="bg" style="
+                            background-image: url('{% static 'img/result_bg.png'  %}'); 
+                            height: 100vh; 
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            background-position: center;
+                            
+                            ">
+        <div class="content">
+            <h1>Here are your results</h1>
+            <table>
+                <tr>
+                    <th>No.</th>
+                    <th>Location</th>
+                    <th>Total Land Area</th>
+                    <th>No. of cow</th>
+                    <th>Product Price</th>
+                    
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Rajasthan </td>
+                    <td>492.86</td>
+                    <td>58</td>
+                    <td>49.31</td>
+                </tr>
+                
+              </table>
+        </div>
 
-    <div class="text">
-        <h3>Here are your results</h3>
     </div>
-
-    </br>
-
-    <table style="width:100%">
-        <tr>
-            <th>No.</th>
-            <th>Location</th>
-            <th>Total land area</th>
-            <th>No. of cow</th>
-            <th>Product price</th>
-            <th>Last updated</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>India</td>
-            <td>2,048</td>
-            <td>500</td>
-            <td>25 </td>
-            <td>25/02/63 </td>
-        </tr>
-    </table>
-
-    </div>
-    
-    <div id="visual" class="graph"></div>
-    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
-
-    <script>
-        async function refresh_visual() {
-            let temp_max = [];
-            let temp_min = [];
-            for (i=0; i<=4; i++){
-                temp_max.push(Math.floor(Math.random() * 100));
-                temp_min.push(Math.floor(Math.random() * 100));
-            }   
-            
-            const plot = Plot.plot({
-                marks: [
-                    Plot.lineY(temp_max,  {stroke: "red"}),
-                    Plot.lineY(temp_min,  {stroke: "green"}),
-                ]
-            })
-            const div = document.getElementById('visual');
-            div.append(plot);
-        }
-        refresh_visual(); //Call refresh_visual methods when page is loaded
-    </script>
-    <button onclick="refresh_visual()">Refresh Visualize</button>
 {% endblock %}

@@ -5,34 +5,27 @@
     box-sizing: border-box;
 }
 
-.text {
-    font: 1em sans-serif;
-    padding-bottom: 10px; 
+.content {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 5%;
 }
-
-table, th, td {
-    border: 2.5px solid black;
-    border-collapse: collapse;
-    width: 20%;
-    background-color: #fff;
-    padding: 5px;
+table {
+    margin-top: 2rem;
 }
-
+table,th, td {
+    border:1px solid black;
+    font-size: 20px;
+}
+th {
+    background-color: black;
+    color: white;
+}
 td {
-    font-size: 25px;
-    text-align: end;
+    background-color: aliceblue;
+    color: black;
+    text-align: center;
 }
-
-button {
-    border-radius: 5px;
-    height: 25px;
-    width: 180px;
-    background: greenyellow;
-    
-    border: 2px solid yellowgreen;
-
-    font-size: 13px;
-    font-weight: 500;
-}
-
-
