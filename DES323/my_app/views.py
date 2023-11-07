@@ -56,12 +56,8 @@ def register(request):
             username = form_data['regis_username'],
             password =  form_data['regis_password']
         )
-        
         new_item.save()
         return redirect('/login')
-
-
-
     return render(request, "register.html")
 
 def contact(request):
