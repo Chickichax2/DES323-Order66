@@ -20,5 +20,6 @@ urlpatterns = [
     path('delete/<id>',views.data_sci_item_delete),
     path('external_api', views.external_api),
     path('pincode', views.pincode),
+    path("api/json/v1/register", views.api_register),
     
 ]

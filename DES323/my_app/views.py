@@ -6,6 +6,15 @@ import pandas as pd
 import requests
 from django.contrib.auth import authenticate , login
 from django.shortcuts import render, redirect
+
+
+from django.contrib.auth.models import User
+from .serailizers import *
+from django.contrib.auth import authenticate
+from rest_framework.authtoken.models import Token
+from rest_framework.parsers import JSONParser
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 def index(request):
@@ -251,3 +260,19 @@ def data_sci_item_delete(request, id):
     dataset_objs.delete()
     return redirect('/manage_user')
 ###########################################################################
+
+@csrf_exempt
+def api_register(request):
+    if request.method == "POST":
+        data = JSONParser().parse(request)
+        serializer = AuthenticationAPISerializer(data=data)
+        if serializer.is_valid():
+            user = User.objects.create_user(
+            username = serializer.data['username'],
+            password = serializer.data['password']
+            )
+            token = Token.objects.create(user=user)
+            return JsonResponse({"status":"success","token":token.key}, status=200)
+        #else:
+        return JsonResponse({"status":"failed","message":"Input not valid."})
+    return JsonResponse({"status":"failed", "message":"Method not allowed."},status=400)
