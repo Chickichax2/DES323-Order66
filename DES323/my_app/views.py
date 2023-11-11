@@ -98,9 +98,9 @@ def create(request):
         form_data = request.POST
         new_item = dairy_dataset(
             location = form_data['location'],
-            tot_land_area = form_data['tot_land_area'],
+            tot_land_area = float(form_data['tot_land_area']),
             num_cows = int(form_data['num_cows']),
-            price = form_data['price'],
+            price = float(form_data['price']),
             recording_date = form_data['recording_date'],
             farm_size = form_data['farm_size'],
             product_type = form_data['product_type'],
@@ -142,9 +142,9 @@ def update(request, id):
     if request.method == "POST":
         form_data = request.POST
         item.location = form_data['location'],
-        item.tot_land_area = form_data['tot_land_area'],
+        item.tot_land_area = float(form_data['tot_land_area']),
         item.num_cows = int(form_data['num_cows']),
-        item.price = form_data['price'],
+        item.price = float(form_data['price']),
         item.recording_date = form_data['recording_date'],
         item.farm_size = form_data['farm_size'],
         item.product_type = form_data['product_type'],
