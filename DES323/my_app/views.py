@@ -93,100 +93,89 @@ def dairy(request):
             errors.append(index)
     return JsonResponse({"success_indexes":success,"error_index":errors})
 ########################################################################
-def create(request):
-    if request.method == "POST":
-        form_data = request.POST
-        new_item = dairy_dataset(
-            location = form_data['location'],
-            tot_land_area = float(form_data['tot_land_area']),
-            num_cows = int(form_data['num_cows']),
-            price = float(form_data['price']),
-            recording_date = form_data['recording_date'],
-            farm_size = form_data['farm_size'],
-            product_type = form_data['product_type'],
-            quantity = int(form_data['quantity'])
-        )
-        try:
-            new_item.save()
-        except:
-            return HttpResponse("An error has occured.")
-        return redirect('read')
-    context_data = {
-        'item_id': "New",
-        'form_data': {
-            'location':"",
-            'tot_land_area':0,
-            'num_cows':0,
-            'price':0,
-            'recording_date':"",
-            'farm_size':"",
-            'product_type':"",
-            'quantity':0
-        }
-    }
-    return render(request, 'create_data.html', context = context_data)
+# def create(request):
+#     if request.method == "POST":
+#         form_data = request.POST
+#         new_item = dairy_dataset(
+#             location = form_data['location'],
+#             tot_land_area = float(form_data['tot_land_area']),
+#             num_cows = int(form_data['num_cows']),
+#             price = float(form_data['price']),
+#             recording_date = form_data['recording_date'],
+#             farm_size = form_data['farm_size'],
+#             product_type = form_data['product_type'],
+#             quantity = int(form_data['quantity'])
+#         )
+#         try:
+#             new_item.save()
+#         except:
+#             return HttpResponse("An error has occured.")
+#         return redirect('read')
+#     context_data = {
+#         'item_id': "New",
+#         'form_data': {
+#             'location':"",
+#             'tot_land_area':0,
+#             'num_cows':0,
+#             'price':0,
+#             'recording_date':"",
+#             'farm_size':"",
+#             'product_type':"",
+#             'quantity':0
+#         }
+#     }
+#     return render(request, 'create_data.html', context = context_data)
 
-def read(request):
-    dairy_objects = dairy_dataset.objects.all()
-    context_data = {
-        "filter_type":"All",
-        "datasets": dairy_objects
-    }
-    return render(request, 'crud_result.html', context = context_data)
+# def read(request):
+#     dairy_objects = dairy_dataset.objects.all()
+#     context_data = {
+#         "filter_type":"All",
+#         "datasets": dairy_objects
+#     }
+#     return render(request, 'crud_result.html', context = context_data)
 
-def update(request, id):
-    try:
-        item = dairy_dataset.objects.get(id = id)
-    except:
-        return HttpResponse("ID not found")
-    if request.method == "POST":
-        form_data = request.POST
-        item.location = form_data['location'],
-        item.tot_land_area = float(form_data['tot_land_area']),
-        item.num_cows = int(form_data['num_cows']),
-        item.price = float(form_data['price']),
-        item.recording_date = form_data['recording_date'],
-        item.farm_size = form_data['farm_size'],
-        item.product_type = form_data['product_type'],
-        item.quantity = int(form_data['quantity'])
-        try:
-            item.save()
-        except:
-            return HttpResponse("An error has occured.")
-        return redirect('read')
-    context_data = {
-        'item_id': id,
-        'form_data': {
-            'location':item.location,
-            'tot_land_area':item.tot_land_area,
-            'num_cows':item.num_cows,
-            'price':item.price,
-            'recording_date':item.recording_date,
-            'farm_size':item.farm_size,
-            'product_type':item.product_type,
-            'quantity':item.quantity
-        }
-    }
-    return render(request, 'create_data.html', context = context_data)
+# def update(request, id):
+#     try:
+#         item = dairy_dataset.objects.get(id = id)
+#     except:
+#         return HttpResponse("ID not found")
+#     if request.method == "POST":
+#         form_data = request.POST
+#         item.location = form_data['location'],
+#         item.tot_land_area = float(form_data['tot_land_area']),
+#         item.num_cows = int(form_data['num_cows']),
+#         item.price = float(form_data['price']),
+#         item.recording_date = form_data['recording_date'],
+#         item.farm_size = form_data['farm_size'],
+#         item.product_type = form_data['product_type'],
+#         item.quantity = int(form_data['quantity'])
+#         try:
+#             item.save()
+#         except:
+#             return HttpResponse("An error has occured.")
+#         return redirect('read')
+#     context_data = {
+#         'item_id': id,
+#         'form_data': {
+#             'location':item.location,
+#             'tot_land_area':item.tot_land_area,
+#             'num_cows':item.num_cows,
+#             'price':item.price,
+#             'recording_date':item.recording_date,
+#             'farm_size':item.farm_size,
+#             'product_type':item.product_type,
+#             'quantity':item.quantity
+#         }
+#     }
+#     return render(request, 'create_data.html', context = context_data)
     
-def delete(request, id):
-    dairy_objects = dairy_dataset.objects.filter(id = id)
-    if len(dairy_objects) <= 0:
-        return HttpResponse("ID not found")
-    dairy_objects.delete()
-    return redirect('read')    
+# def delete(request, id):
+#     dairy_objects = dairy_dataset.objects.filter(id = id)
+#     if len(dairy_objects) <= 0:
+#         return HttpResponse("ID not found")
+#     dairy_objects.delete()
+#     return redirect('read')    
 #############################################################################
-#### crud user ##########################################################
-
-    
-        
-
-
-
-
-
-
-#### crud user ##########################################################
 def external_api(request):
     api_url = "https://api.postalpincode.in/pincode/110001"
     response = requests.get(api_url)
