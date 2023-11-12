@@ -21,7 +21,7 @@ body {
 
 .colorBack {
     background-color: rgba(0, 0, 0, 0.5);
-    height: 776px;
+    height: 100vh;
 }
 .wrap {
     height: 776px;
