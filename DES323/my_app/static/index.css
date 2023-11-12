@@ -11,14 +11,14 @@
     
 }
 
-body {
+
+.bg {
     background-image: url('https://news.mit.edu/sites/default/files/images/202206/MIT-Labby-01.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     height: 100vh;
 }
-
 .colorBack {
     background-color: rgba(0, 0, 0, 0.5);
     height: 100vh;
@@ -35,6 +35,8 @@ body {
     font-size: 50px;
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     -webkit-text-stroke: 1px #fff;
+    display: flex;
+    justify-content: center;
 }
 
 .second_text {
@@ -70,7 +72,17 @@ body {
 }
 
 @media only screen and (max-width: 391px) {
-    .colorBack {
-        display: none;
+    .bg{
+        background-position: -300px;
     }
-} 
+    .first_text{
+        font-size: 40px;
+        flex-direction: column;
+       
+    }
+    .first_text h2 {
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+    }
+}
