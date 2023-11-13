@@ -64,7 +64,18 @@ def contact(request):
     return render(request, "contact.html")
 
 def result(request):
-    return render(request, "result.html")
+    if request.method == "POST":
+        form_data = request.POST
+        farmSize = form_data['farm_size']
+        product = form_data['Product']
+        quantities = form_data['quantities']
+        mydata = dairy_dataset.objects.filter(farm_size=farmSize, product_type=product)[:20]
+        
+        print(mydata)
+        context_data = {
+            "datasets": mydata
+        }
+        return render(request, "result.html", context=context_data)
 
 def pincode(request):
     return render(request, "pincode.html")

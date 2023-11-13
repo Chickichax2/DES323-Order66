@@ -10,7 +10,7 @@ urlpatterns = [
     path('register',views.register),
     path('contact', views.contact),
     path('result', views.result),
-    # path('dairy', views.dairy),
+    # Do not use this path again path('dairy', views.dairy),
     # path('create', views.create),
     # path('read', views.read),
     # path('update', views.update),

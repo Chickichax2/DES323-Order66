@@ -27,14 +27,16 @@
                     <th>Product Price</th>
                     
                 </tr>
+                {% for row in datasets %}
                 <tr>
-                    <td>1</td>
-                    <td>Rajasthan </td>
-                    <td>492.86</td>
-                    <td>58</td>
-                    <td>49.31</td>
+                    <td>{{ row.index }}</td>
+                    <td>{{ row.location}}</td>
+                    <td>{{ row.tot_land_area }}</td>
+                    <td>{{ row.num_cows }}</td>
+                    <td>{{ row.price }}</td>
+                    
                 </tr>
-                
+                {% endfor %}
               </table>
         </div>
 
