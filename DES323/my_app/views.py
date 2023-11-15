@@ -17,6 +17,9 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
+
+
+
 def index(request):
     return render(request, "index.html")
 
@@ -27,38 +30,73 @@ def user(request):
     return render(request, "user.html")
 
 def search(request):
-    return render(request, "search.html")
+    email =""
+    pass1 = ""
+    is_user = False
+    if request.method == 'POST':
+         email = request.POST['email']
+         pass1 = request.POST['pass']
+    print(email,pass1)
+    try :
+        mydata = user_ac.objects.get(email=email)
+        if mydata.email == email and mydata.password == pass1:
+            log_in = True
+            print(log_in)
+            return render(request, "search.html")
+        else:
+            return render(request, "login.html")
+    except:
+        return render(request, "login.html")
+    
+    
+    
 
 def login(request):
-    # if request.method == 'POST':
-    #     email = request.POST['email']
-    #     pass1 = request.POST['pass']
-        
-    #     user_ac = authenticate(email=email, password=pass1)
-        
-    #     if user_ac is not None:
-    #         login(request, user_ac)
-    #         username = user.username
-    #         # messages.success(request, "Logged In Sucessfully!!")
-    #         return render(request, "search",{"username":username})
-        
-            
-    
     return render(request, "login.html")
 
+def logout(request):
+ 
+    return render(request, "login.html")
     
 
 def register(request):
     if request.method == "POST":
-        form_data = request.POST
+        email = request.POST['regis_email']
+        username = request.POST['regis_username']
+        pass1 = request.POST['regis_password']
+        pass2 = request.POST['regis_conpassword']
+        if user_ac.objects.filter(email=email):
+            context_data = {
+            "messages": "Email Already Registered!!"
+            }
+            return render(request, "register.html",context=context_data)
+        if user_ac.objects.filter(username=username):
+            context_data = {
+            "messages": "Username Already Registered!!"
+            }
+            return render(request, "register.html",context=context_data)
+        if user_ac.objects.filter(password=pass1):
+            context_data = {
+            "messages": "Password Already Registered!!"
+            }
+            return render(request, "register.html",context=context_data)
+        if pass1 != pass2:
+            context_data = {
+            "messages": "Passwords didn't matched!!"
+            }
+            return render(request, "register.html",context=context_data)
         new_item = user_ac(
-            email = form_data['regis_email'],
-            username = form_data['regis_username'],
-            password =  form_data['regis_password']
+            email = email,
+            username = username,
+            password =  pass1
         )
         new_item.save()
         return redirect('/login')
-    return render(request, "register.html")
+    context_data = {
+            "messages": "wellcom"
+            }
+    return render(request, "register.html",context=context_data)
+
 
 def contact(request):
     return render(request, "contact.html")
