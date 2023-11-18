@@ -15,10 +15,8 @@ from rest_framework.authtoken.models import Token
 from rest_framework.parsers import JSONParser
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+import hashlib
 # Create your views here.
-
-
-
 
 def index(request):
     return render(request, "index.html")
@@ -29,13 +27,17 @@ def about(request):
 def user(request):
     return render(request, "user.html")
 
+def home(request):
+    return render(request, "search.html")
+
 def search(request):
     email =""
     pass1 = ""
-    is_user = False
     if request.method == 'POST':
          email = request.POST['email']
          pass1 = request.POST['pass']
+         pass1 = hashlib.md5(pass1.encode())
+         pass1 = pass1.hexdigest()
     print(email,pass1)
     try :
         mydata = user_ac.objects.get(email=email)
@@ -48,23 +50,20 @@ def search(request):
     except:
         return render(request, "login.html")
     
-    
-    
-
 def login(request):
     return render(request, "login.html")
 
 def logout(request):
- 
     return render(request, "login.html")
     
-
 def register(request):
     if request.method == "POST":
         email = request.POST['regis_email']
         username = request.POST['regis_username']
         pass1 = request.POST['regis_password']
         pass2 = request.POST['regis_conpassword']
+        passW = hashlib.md5(pass1.encode())
+        hash_pass = passW.hexdigest()
         if user_ac.objects.filter(email=email):
             context_data = {
             "messages": "Email Already Registered!!"
@@ -75,7 +74,7 @@ def register(request):
             "messages": "Username Already Registered!!"
             }
             return render(request, "register.html",context=context_data)
-        if user_ac.objects.filter(password=pass1):
+        if user_ac.objects.filter(password=hash_pass):
             context_data = {
             "messages": "Password Already Registered!!"
             }
@@ -88,7 +87,7 @@ def register(request):
         new_item = user_ac(
             email = email,
             username = username,
-            password =  pass1
+            password =  hash_pass
         )
         new_item.save()
         return redirect('/login')
@@ -107,7 +106,11 @@ def result(request):
         farmSize = form_data['farm_size']
         product = form_data['Product']
         quantities = form_data['quantities']
-        mydata = dairy_dataset.objects.filter(farm_size=farmSize, product_type=product)[:20]
+        quantities = list(quantities.split("-"))
+        min = int(quantities[0])
+        max = int(quantities[1])
+        print(min, max)
+        mydata = dairy_dataset.objects.filter(farm_size=farmSize, product_type=product, quantity__range=(min, max))[:20]
         
         print(mydata)
         context_data = {
@@ -230,17 +233,10 @@ def external_api(request):
     response = requests.get(api_url)
     if response.status_code == 200:
         data = response.json()
-
-    # Assuming the response structure is a list with one object
     if len(data) > 0:
-        # Access the first (and only) object in the list
         specific_object = data[0]
-
-        # Access and print specific elements within the object
         print("Status:", specific_object.get("Status"))
         print("Message:", specific_object.get("Message"))
-
-        # Accessing PostOffice details (assuming it's also a list)
         post_offices = specific_object.get("PostOffice", [])
         for office in post_offices:
             print("Post Office Name:", office.get("Name"))
@@ -252,8 +248,6 @@ def external_api(request):
             print("No data available.")
     else:
         print("Failed to fetch data. Status code:", response.status_code)
-    
-
     return JsonResponse(response.json(), safe=False)
 ###############################################################################
 def data_sci_item_list_all(request):
@@ -286,7 +280,6 @@ def data_sci_item_edit(request, id):
         }
     }
     return render(request, 'form.html', context=context_data)
-
 def data_sci_item_delete(request, id):
     dataset_objs = user_ac.objects.filter(id = id)
     if len(dataset_objs) <= 0:
@@ -294,7 +287,6 @@ def data_sci_item_delete(request, id):
     dataset_objs.delete()
     return redirect('/manage_user')
 ###########################################################################
-
 @csrf_exempt
 def api_register(request):
     if request.method == "POST":

@@ -20,25 +20,30 @@
             <h1>Here are your results</h1>
             <table>
                 <tr>
-                    <th>No.</th>
                     <th>Location</th>
                     <th>Total Land Area</th>
                     <th>No. of cow</th>
                     <th>Product Price</th>
+                    <th>Quantity</th>
                     
                 </tr>
                 {% for row in datasets %}
                 <tr>
-                    <td>{{ row.index }}</td>
                     <td>{{ row.location}}</td>
                     <td>{{ row.tot_land_area }}</td>
                     <td>{{ row.num_cows }}</td>
                     <td>{{ row.price }}</td>
+                    <td>{{ row.quantity }}</td>
                     
                 </tr>
                 {% endfor %}
               </table>
         </div>
-
+    </div>
+    <div class="regression">
+        <h1>Linear Regression</h1>
+        <div class="grap">
+            
+        </div>
     </div>
 {% endblock %}
