@@ -6,8 +6,6 @@ import pandas as pd
 import requests
 from django.contrib.auth import authenticate , login
 from django.shortcuts import render, redirect
-
-
 from django.contrib.auth.models import User
 from .serailizers import *
 from django.contrib.auth import authenticate
@@ -29,7 +27,16 @@ def about(request):
     return render(request, "about.html")
 
 def user(request):
-    return render(request, "user.html")
+    name = request.session['username']
+    email = request.session['email'] 
+    id = request.session['id'] 
+    context_data = {
+        "name": name,
+        "email": email,
+        "id": id
+    }
+    return render(request, "user.html", context=context_data)
+
 
 def home(request):
     return render(request, "search.html")
@@ -46,8 +53,10 @@ def search(request):
     try :
         mydata = user_ac.objects.get(email=email)
         if mydata.email == email and mydata.password == pass1:
-            log_in = True
-            print(log_in)
+            request.session['username'] = mydata.username
+            request.session['email'] = mydata.email
+            request.session['id'] = mydata.id
+            print(mydata.id)
             return render(request, "search.html")
         else:
             return render(request, "login.html")
@@ -300,10 +309,12 @@ def data_sci_item_edit(request, id):
         item.email = form_data['Email']
         item.username = form_data['Username']
         try:
+            request.session['username'] = item.username
             item.save()
+
         except:
             return HttpResponse("ERROR!")
-        return redirect('/manage_user')
+        return redirect('/user')
     context_data = {
         'item_id': id,
         'form_data': {
@@ -317,7 +328,7 @@ def data_sci_item_delete(request, id):
     if len(dataset_objs) <= 0:
         return HttpResponse("ID Not found")
     dataset_objs.delete()
-    return redirect('/manage_user')
+    return redirect('/login')
 ###########################################################################
 @csrf_exempt
 def api_register(request):
