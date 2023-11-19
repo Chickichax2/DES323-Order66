@@ -45,3 +45,8 @@ td {
     height: auto;
     min-height: 100px;
 }
+
+.graphic{
+    display: flex;
+    justify-content: center;
+}

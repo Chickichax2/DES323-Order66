@@ -16,6 +16,10 @@ from rest_framework.parsers import JSONParser
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import hashlib
+import matplotlib.pyplot as plt
+from io import BytesIO
+import base64
+from scipy import stats
 # Create your views here.
 
 def index(request):
@@ -100,9 +104,13 @@ def register(request):
 def contact(request):
     return render(request, "contact.html")
 
+
 def result(request):
     if request.method == "POST":
         form_data = request.POST
+        num_cow = []
+        area = []
+        
         farmSize = form_data['farm_size']
         product = form_data['Product']
         quantities = form_data['quantities']
@@ -110,14 +118,38 @@ def result(request):
         min = int(quantities[0])
         max = int(quantities[1])
         print(min, max)
+
         mydata = dairy_dataset.objects.filter(farm_size=farmSize, product_type=product, quantity__range=(min, max))[:20]
+    
+        num_cow = [item.num_cows for item in mydata]
+        quantity = [item.quantity for item in mydata]
+        slope, intercept , r, p, std_err= stats.linregress(num_cow, quantity)
+        def myfunc(x):
+            return slope * x + intercept
+        mymodel = list(map(myfunc, num_cow))
+        print(num_cow,quantity)
+        plt.scatter(num_cow, quantity)
+        plt.plot(num_cow, mymodel)
+        plt.xlabel('Number of cow')
+        plt.ylabel('Quantity')
+        plt.title('Dairy Dataset')
         
+        buffer = BytesIO()
+        plt.savefig(buffer, format='png')
+        buffer.seek(0)
+        plt.close()
+
+        image_png = buffer.getvalue()
+        buffer.close()
+        graphic = base64.b64encode(image_png).decode('utf-8')
+
         print(mydata)
         context_data = {
-            "datasets": mydata
+            "datasets": mydata,
+            'graphic': graphic
         }
         return render(request, "result.html", context=context_data)
-
+    
 def pincode(request):
     return render(request, "pincode.html")
 
