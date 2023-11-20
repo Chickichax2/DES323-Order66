@@ -24,7 +24,7 @@
                     <th>Total Land Area</th>
                     <th>No. of cow</th>
                     <th>Product Price</th>
-                    <th>Quantity</th>
+                    <th>Last uodated</th>
                     
                 </tr>
                 {% for row in datasets %}
@@ -33,7 +33,7 @@
                     <td>{{ row.tot_land_area }}</td>
                     <td>{{ row.num_cows }}</td>
                     <td>{{ row.price }}</td>
-                    <td>{{ row.quantity }}</td>
+                    <td>{{ row.recording_date }}</td>
                     
                 </tr>
                 {% endfor %}

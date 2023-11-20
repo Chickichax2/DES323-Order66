@@ -67,7 +67,13 @@ def login(request):
     return render(request, "login.html")
 
 def logout(request):
-    return render(request, "login.html")
+    try:
+        del request.session['username'] 
+        del request.session['email'] 
+        del request.session['id'] 
+        return render(request, "login.html")
+    except:
+        return render(request, "login.html")
     
 def register(request):
     if request.method == "POST":
