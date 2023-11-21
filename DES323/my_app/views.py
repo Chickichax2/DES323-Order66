@@ -111,7 +111,7 @@ def register(request):
         new_item.save()
         return redirect('/login')
     context_data = {
-            "messages": "wellcom"
+            "messages": "Welcome"
             }
     return render(request, "register.html",context=context_data)
 
