@@ -8,7 +8,7 @@
 
 .full {
     max-width: 1140;
-    height: 722px;
+    height: 100vh;
     left: 0px;
     background-image: url('https://modernfarmer.com/wp-content/uploads/2014/09/innercowhero.jpg');
     background-repeat: no-repeat;
@@ -120,12 +120,18 @@ form select:hover {
     color: #fff;
     font-weight: 600;
     transition: .5s;
+    text-align: center;
 
 }
 
 .home button:hover {
     cursor: pointer;
     translate: 0 -5px;
+}
+.home a {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
 }
 
 

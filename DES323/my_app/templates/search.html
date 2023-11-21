@@ -14,52 +14,59 @@
             <div class="home">
                 <h1>Dairy Finder</h1> <br>
                 <h2>The Republic of India</h2> <br><br>
-                <div class="dropdown">
-                    <p> Farm Size </p>
-                    <form>
-                        <select id="fsize">
-                            <option>Small</option>
-                            <option>Medium</option>
-                            <option>Large</option>
-                        </select>
-                    </form>
-                </div> <br>
-                <div class="dropdown">
-                    <p> Product Type </p>
-                    <form>
-                        <select id="fsize">
-                            <option>Ice Cream</option>
-                            <option>Milk</option>
-                            <option>Yogurt</option>
-                            <option>Cheese</option>
-                            <option>Buttermilk</option>
-                            <option>Curd</option>
-                            <option>Paneer</option>
-                            <option>Lassi</option>
-                            <option>Ghee</option>
-                            <option>Butter</option>
-                        </select>
-                    </form>
-                </div> <br>
-                <div class="dropdown">
-                    <p> Quantities (liters/kg) </p>
-                    <form>
-                        <select id="fsize">
-                            <option>1-100</option>
-                            <option>101-200</option>
-                            <option>201-300</option>
-                            <option>301-400</option>
-                            <option>401-500</option>
-                            <option>501-600</option>
-                            <option>601-700</option>
-                            <option>701-800</option>
-                            <option>801-900</option>
-                            <option>901-1000</option>
-                        </select>
-                    </form>
-                </div> <br>
+                <form action="/result" method="POST">  
+                    {% csrf_token %}
+                    <div class="dropdown">
+                        <p> Farm Size </p>
+                        
+                            <select  name="farm_size">
+                                <option value="Small">Small</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Large">Large</option>
+                            </select>
+                        
+                    </div> <br>
+                    <div class="dropdown">
+                        <p> Product Type </p>
+                        
+                            <select  name="Product">
+                                <option value="Ice Cream">Ice Cream</option>
+                                <option value="Milk">Milk</option>
+                                <option value="Yogurt">Yogurt</option>
+                                <option value="Cheese">Cheese</option>
+                                <option value="Buttermilk">Buttermilk</option>
+                                <option value="Curd">Curd</option>
+                                <option value="Paneer">Paneer</option>
+                                <option value="Lassi">Lassi</option>
+                                <option value="Ghee">Ghee</option>
+                                <option value="Butter">Butter</option>
+                            </select>
+                        
+                    </div> <br>
+                    <div class="dropdown">
+                        <p> Quantities (liters/kg) </p>
+                        
+                            <select id="fsize" name="quantities">
+                                <option value="1-100">1-100</option>
+                                <option value="101-200">101-200</option>
+                                <option value="201-300">201-300</option>
+                                <option value="301-400">301-400</option>
+                                <option value="401-500">401-500</option>
+                                <option value="501-600">501-600</option>
+                                <option value="601-700">601-700</option>
+                                <option value="701-800">701-800</option>
+                                <option value="801-900">801-900</option>
+                                <option value="901-1000">901-1000</option>
+                            </select>
+                        
+                    </div> <br>
+                    <div class="bt"><button type="submit">Submit</button></div>
+                    
+                    
+                </form>
+                
 
-                <a href="result"><button onclick="generate()">Submit</button></a>
+                
             </div>
 
         </div>

@@ -15,10 +15,10 @@
         <div class="container">
             <div class="nav-wrapper">
                 <div class="logo">
-                    <a class="logo-img" href="search"><img src="{% static 'img/logo.png' %}" alt="logo" width="25%"></a>
+                    <a class="logo-img" href="home"><img src="{% static 'img/logo.png' %}" alt="logo" width="25%"></a>
                 </div>
                 <ul class="menu" id="myMenu">
-                    <li><a class="navRight-a" href="#">Services</a></li>
+                    <li><a class="navRight-a" href="pincode">Pincode</a></li>
                     <li><a class="navRight-a" href="about">About</a></li>
                     <li><a class="navRight-a" href="contact">Contact us</a></li>
                     <li><a class="navRight-a" href="user"><span class="material-symbols-outlined">person</span></a></li>
@@ -37,9 +37,18 @@
         {% endblock %}
     </div>
     <div class="footer-container">
-        <h2 class="footer-text">
-            About us
-        </h2>
+        <h1 class="footer-text">
+            Order 66 
+        </h1>
+        <ul style="color: aliceblue; display: flex; list-style: none; margin-top: 10px;">
+            <li style="margin-right: 10px;">HOME</li>
+            <li  style="margin-right: 10px;">PINCODE</li>
+            <li  style="margin-right: 10px;">ABOUT</li>
+            <li  style="margin-right: 10px;">CONTACT US</li>
+            <li>USER</li>
+        </ul>
+        <h2 style="color: aliceblue; margin-top: 10px;">THANK YOU</h2>
+
     </div>
     <script>
         function myFunction(x) {

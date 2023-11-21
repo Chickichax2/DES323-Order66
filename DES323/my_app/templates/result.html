@@ -20,23 +20,30 @@
             <h1>Here are your results</h1>
             <table>
                 <tr>
-                    <th>No.</th>
                     <th>Location</th>
                     <th>Total Land Area</th>
                     <th>No. of cow</th>
                     <th>Product Price</th>
+                    <th>Last uodated</th>
                     
                 </tr>
+                {% for row in datasets %}
                 <tr>
-                    <td>1</td>
-                    <td>Rajasthan </td>
-                    <td>492.86</td>
-                    <td>58</td>
-                    <td>49.31</td>
+                    <td>{{ row.location}}</td>
+                    <td>{{ row.tot_land_area }}</td>
+                    <td>{{ row.num_cows }}</td>
+                    <td>{{ row.price }}</td>
+                    <td>{{ row.recording_date }}</td>
+                    
                 </tr>
-                
+                {% endfor %}
               </table>
         </div>
-
+    </div>
+    <div class="regression">
+        <h1>Linear Regression</h1>
+        <div class="graphic">
+            <img src="data:image/png;base64,{{ graphic }}" alt="Matplotlib Plot">
+        </div>
     </div>
 {% endblock %}
