@@ -50,3 +50,12 @@ td {
     display: flex;
     justify-content: center;
 }
+
+@media (max-width: 391px) {
+    .img_re {
+        width: 20rem;
+    }
+    .regression{
+        margin-left: 10px;
+    }
+}
